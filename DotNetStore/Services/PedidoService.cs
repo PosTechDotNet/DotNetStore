@@ -7,8 +7,10 @@ using Microsoft.IdentityModel.Protocols;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,13 +19,26 @@ namespace DotNetStoreDurableFunction.Services
     public class PedidoService : IPedidoService
     {
         private readonly DataContext _dataContext;
+        private readonly List<Usuario> _usuarios;
+        private readonly List<Endereco> _enderecos;
+        private readonly List<Produto> _produtos;
         public PedidoService(DataContext dataContext)
         {
             _dataContext = dataContext;
+
+            _usuarios = CarregarDadosJson<List<Usuario>>("Data/Usuario.json");
+            _enderecos = CarregarDadosJson<List<Endereco>>("Data/Endereco.json");
+            _produtos = CarregarDadosJson<List<Produto>>("Data/Produtos.json");
+        }
+
+        private T CarregarDadosJson<T>(string caminho)
+        {
+            var json = File.ReadAllText(caminho);
+            return JsonConvert.DeserializeObject<T>(json);
         }
         public Pedido ObterUsuario(Pedido pedido)
         {
-            var dadosUsuario = _dataContext.Usuarios.Select(u => u).Where(u => u.Id == pedido.UsuarioId).FirstOrDefault();
+            var dadosUsuario = _usuarios.FirstOrDefault(u => u.Id == pedido.UsuarioId);
 
             //popular dados dentro do pedido
             Pedido pedidoComDadosUsuario = new Pedido()
@@ -49,11 +64,8 @@ namespace DotNetStoreDurableFunction.Services
             var obterDadosProdutos = new List<Produto>();
             foreach (var item in pedido.Produtos)
             {
-                var produto = _dataContext.Produtos
-                                .Select(produto => produto)
-                                .Where(produto => produto.SKU == item.SKU)                                
-                                .FirstOrDefault();
-                
+                var produto = _produtos.FirstOrDefault(p => p.SKU == item.SKU);
+
                 if (produto != null)
                     obterDadosProdutos.Add(produto);
             }           
@@ -83,33 +95,32 @@ namespace DotNetStoreDurableFunction.Services
 
         public Pedido ObterEndereco(Pedido pedido)
         {
+            // Obtém o usuário da lista com o ID correspondente
+            var usuario = _usuarios.FirstOrDefault(u => u.Id == pedido.UsuarioId);
 
-            //Vai na tabela de usuário para pegar o seu endereco a partir do Id
-            var obterDadosEndereco = _dataContext.Usuarios
-                .Include(u => u.Endereco)
-                .Where(u => u.Id == pedido.UsuarioId).FirstOrDefault();
-
-
-            //Calcula total dos valor dos produtos + frete
-            var totalProdutoFrete = pedido.PrecoTotal + obterDadosEndereco.Endereco.ValorFrete;
-
-            //popular dados dentro do pedido
-            var pedidoComDadosEndereco = new Pedido()
+            if (usuario != null)
             {
-                UsuarioId = pedido.Id,
-                Usuario = new Usuario
+                // Calcula total dos valor dos produtos + frete
+                decimal totalProdutoFrete = pedido.PrecoTotal + usuario.Endereco.ValorFrete;
+
+                // Popula dados dentro do pedido
+                var pedidoComDadosEndereco = new Pedido()
                 {
-                    Id = obterDadosEndereco.Id,
-                    CPF = obterDadosEndereco.CPF,
-                    Nome = obterDadosEndereco.Nome
-                },
-                Produtos = pedido.Produtos,
-                PrecoTotal = totalProdutoFrete,
-                Endereco = obterDadosEndereco.Endereco
+                    UsuarioId = pedido.UsuarioId,
+                    Usuario = new Usuario
+                    {
+                        Id = usuario.Id,
+                        CPF = usuario.CPF,
+                        Nome = usuario.Nome
+                    },
+                    Produtos = pedido.Produtos,
+                    PrecoTotal = totalProdutoFrete,
+                    Endereco = usuario.Endereco
+                };
 
-            };
-
-            return pedidoComDadosEndereco;
+                return pedidoComDadosEndereco;
+            }
+            return null;
         }
 
         public async Task<CadastrarPedidoDto> SalvarPedido(Pedido pedido)

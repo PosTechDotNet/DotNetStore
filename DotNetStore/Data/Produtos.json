@@ -1,0 +1,25 @@
+{
+    "produtos": [
+      {
+        "Id": 1,
+        "SKU": 55,
+        "Descricao": "Camiseta",
+        "Quantidade": 1,
+        "ValorUnitario": 29.99
+      },
+      {
+        "Id": 2,
+        "SKU": 150,
+        "Descricao": "Calça Jeans",
+        "Quantidade": 1,
+        "ValorUnitario": 89.99
+      },
+      {
+        "Id": 3,
+        "SKU": 23,
+        "Descricao": "Tênis Esportivo",
+        "Quantidade": 1,
+        "ValorUnitario": 129.99
+      }
+    ]
+  }
