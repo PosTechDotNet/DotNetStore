@@ -48,11 +48,11 @@ namespace DotNetStoreDurableFunction
         }
 
         [FunctionName(nameof(IPedidoService.SalvarPedido))]
-        public async Task<CadastrarPedidoDto> SalvarPedido([ActivityTrigger] Pedido pedido, ILogger log)
+        public async Task<Pedido> SalvarPedido([ActivityTrigger] Pedido pedido, ILogger log)
         {
             log.LogInformation("Salvando o pedido");
 
-            var salvaPedido = await _pedidoService.SalvarPedido(pedido);
+            var salvaPedido = _pedidoService.SalvarPedido(pedido);
 
             //log.LogInformation($"Pedido {salvaPedido.NumeroPedido} recebido por {salvaPedido.Usuario.Nome} foi salvo!");
 

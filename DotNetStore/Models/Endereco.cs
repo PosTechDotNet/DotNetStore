@@ -9,7 +9,7 @@
         public int Numero { get; set; }
         public string Complemento { get; set; }
         public string CEP { get; set; }
-        public decimal ValorFrete { get; set; }
+        public double ValorFrete { get; set; }
         public int UsuarioId { get; set; }
     }
 }

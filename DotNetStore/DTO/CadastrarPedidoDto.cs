@@ -13,13 +13,13 @@ namespace DotNetStoreDurableFunction.DTO
     public class CadastrarPedidoDto : TableEntity
     {
         //public int Id { get; set; }
-        //public uint NumeroPedido { get; set; }
+        public int NumeroPedido { get; set; }
         //public int UsuarioId { get; set; }
-        //public Usuario Usuario { get; set; }
-        //public List<Produto> Produtos { get; set; }
-        //[Column(TypeName = "decimal(18,2)")]
-        public string PrecoTotal { get; set; }
-        //public Endereco Endereco { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public string Produtos { get; set; }
+        public double PrecoTotal { get; set; }
+        public string Endereco { get; set; }
 
         public CadastrarPedidoDto()
         {

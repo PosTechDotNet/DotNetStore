@@ -4,6 +4,7 @@ using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetStoreDurableFunction
 {
@@ -11,7 +12,7 @@ namespace DotNetStoreDurableFunction
     {
         [FunctionName(nameof(Orquestrador))]
         public async Task<Pedido> RunOrchestrator(
-            [OrchestrationTrigger] IDurableOrchestrationContext context)
+            [OrchestrationTrigger] IDurableOrchestrationContext context, ILogger log)
         {
             var pedido = context.GetInput<Pedido>();
 
@@ -25,9 +26,9 @@ namespace DotNetStoreDurableFunction
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return null;
-            }           
+                log.LogInformation("Falha ao processar o pedido", ex);
+                return default;
+            }
         }
     }
 }
