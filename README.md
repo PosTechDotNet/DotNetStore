@@ -14,8 +14,8 @@
     - [Execução Local](#execução-local)
       - [Otendo a string de conexão do Table Storage](#otendo-a-string-de-conexão-do-table-storage)
       - [Emulador de Storage ou Plataforma Azure](#emulador-de-storage-ou-plataforma-azure)
-      - [Pelo VSCode](#pelo-vscode)
-      - [Pelo Visual Studio](#pelo-visual-studio)
+      - [Executando pelo VSCode](#executando-pelo-vscode)
+      - [Executando Visual Studio](#executando-visual-studio)
       - [Chamada da Função](#chamada-da-função)
       - [Exemplo de um Pedido para testar a aplicação](#exemplo-de-um-pedido-para-testar-a-aplicação)
             
@@ -46,7 +46,10 @@ Desenvolvimento de uma Durable Function com o Function Chaining Pattern para rea
 [voltar](#índice)
 
 ## Como Executar o Projeto
+
 ### Criação do Azure Table Storage
+Antes é necessário criar um Azure Table Storage. Isso pode ser feito pela Plataforma Azure ou pelo Azure CLI.
+
 #### Plataforma
 Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você pode seguir as etapas abaixo usando o Portal do Azure:
 
@@ -102,6 +105,7 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
 [voltar](#índice)
 
 ### Execução Local
+Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar a string de conexão no projeto.
 
 #### Otendo a string de conexão do Table Storage
 1. Na aba à esquerda no campo Security + Networking clique em Access Keys
@@ -118,7 +122,7 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
    ```
 
 #### Emulador de Storage ou Plataforma Azure
-1. Primeiro devemos criar um arquivo json com o seguinte nome **local.settings.json** e inserir os dados abaixo.
+1. Dentro da pasta `DotNetStore` devemos criar um arquivo json com o seguinte nome **local.settings.json** e inserir os dados abaixo.
    ```
     {
       "IsEncrypted": false,
@@ -133,28 +137,30 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
 3. Para executar o projeto no seu ambiente local, você pode usar o Emulador Azurite para a configuração de conexão AzureWebJobsStorage, exigida pelo projeto.
 4. Para utilizar o emulador, defina o valor de AzureWebJobsStorage como **UseDevelopmentStorage=true**. Altere essa configuração para uma cadeia de conexão de conta de armazenamento antes da implantação.
 ![LocalSettings](DotNetStore/Assets/imgs/local_settings.jpg)
+5. Caso não deseje usar o emulador Azurite pode utilizar a mesma string de conexão que vai na *AzTbStorageConnectionString* na *AzureWebJobsStorage*.
+6. Para que a aplicação grave os pedidos na Table Storage é **obrigatório** que a *AzTbStorageConnectionString* receba uma string de conexão.
 
 ***Para obter mais informações, confira [“Emulador de armazenamento local”](https://learn.microsoft.com/pt-br/azure/storage/common/storage-use-azurite?tabs=visual-studio-code%2Ctable-storage).***
 
-#### Pelo VSCode
+#### Executando pelo VSCode
 1. Para executar uma função do Azure Functions no Visual Studio Code, você precisará instalar a extensão do Azure Functions no VSCode.
    1. Abra o VSCode.
    2. No menu lateral, clique no ícone de extensões (ícone de quebra-cabeça) ou pressione Ctrl (Command) + Shift + X.
    3. Procure por "Azure Functions" e instale a extensão fornecida pela Microsoft.
-2. Abra o terminal no VSCode pressionando os comandos Ctrl (Command) + Shift + `
-3. Navegue até a pasta do seu projeto do Azure Functions.
-4. Execute o seguinte comando:
+3. Abra o terminal no VSCode pressionando os comandos Ctrl (Command) + Shift + `
+4. Navegue até a pasta `DotNetStore` do seu projeto do Azure Functions.
+5. Execute o seguinte comando:
 ```
 func start
 
 ```
 
-#### Pelo Visual Studio
-1.
-2.
-3.
-4.
-5.
+#### Executando Visual Studio
+1. Mussum Ipsum, cacilds vidis litro abertis.    
+2. Casamentiss faiz malandris se pirulitá.
+3. In elementis mé pra quem é amistosis quis leo.
+4. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+5. Diuretics paradis num copo é motivis de denguis.
 
 #### Chamada da Função
 Com a função em execução, você pode chamar suas funções HTTP ou ativar eventos para outras funções. Observe que, para funções HTTP, você precisará de uma ferramenta como o Postman para testar chamadas HTTP localmente.
@@ -163,30 +169,32 @@ Com a função em execução, você pode chamar suas funções HTTP ou ativar ev
 
 #### Exemplo de um Pedido para testar a aplicação
 
+1. Mussum Ipsum, cacilds vidis litro abertis.    
+2. Casamentiss faiz malandris se pirulitá.
+3. In elementis mé pra quem é amistosis quis leo.
+4. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+5. Diuretics paradis num copo é motivis de denguis.
+
+
 ```
 {
     "UsuarioId": 1,
     "Produtos": [
         {
-            "SKU": 1,
-            "Quantidade": 1,
-            "ValorUnitario": 200
-        },
-        {
-            "SKU": 5,
-            "Quantidade": 1,
-            "ValorUnitario": 300
-        },
-        {
             "SKU": 55,
-            "Quantidade": 2,
-            "ValorUnitario": 1
+            "Quantidade": 1,
+            "ValorUnitario": 29.99
+        },
+        {
+            "SKU": 150,
+            "Quantidade": 1,
+            "ValorUnitario": 89.99
         }
     ],
     "Endereco": {
-        "cep": "12345-000",
-        "numero": 434,
-        "complemento": "qualquer coisa"
+        "cep": "12345-678",
+        "numero": 123,
+        "complemento": "Apartamento 1"
     }
 }
 ```
