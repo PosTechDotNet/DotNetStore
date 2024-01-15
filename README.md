@@ -123,6 +123,7 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
 
 #### Emulador de Storage ou Plataforma Azure
 1. Dentro da pasta `DotNetStore` devemos criar um arquivo json com o seguinte nome **local.settings.json** e inserir os dados abaixo.
+   
    ```
     {
       "IsEncrypted": false,
@@ -133,6 +134,8 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
       }
     }
    ```
+    ![VSCodeFolder](DotNetStore/Assets/imgs/VSCodeFolder.jpg)
+
 2. O **local.settings.json** pode conter informações sensíveis, como cadeias de conexão e segredos. Por essa razão, é altamente recomendável que você nunca armazene esse arquivo em um repositório remoto, a fim de evitar a exposição de dados confidenciais.
 3. Para executar o projeto no seu ambiente local, você pode usar o Emulador Azurite para a configuração de conexão AzureWebJobsStorage, exigida pelo projeto.
 4. Para utilizar o emulador, defina o valor de AzureWebJobsStorage como **UseDevelopmentStorage=true**. Altere essa configuração para uma cadeia de conexão de conta de armazenamento antes da implantação.
