@@ -93,9 +93,11 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
     ```
       az storage table create --account-name <NOME_DA_CONTA> --name <NOME_DA_TABELA>
     ```
-  ![StorageTable](DotNetStore/Assets/imgs/Storage_Table.jpg)
-1. Lembre-se de substituir **NOME_DA_CONTA** pelo nome da sua conta de armazenamento e **NOME_DA_TABELA** pelo nome desejado para a tabela. No caso o nome será **Pedidos**.
-2. Se você ainda não instalou o Azure CLI, pode fazer o download e instalá-lo a partir do site oficial: [Azure CLI](https://learn.microsoft.com/pt-br/cli/azure/install-azure-cli).
+    ![StorageTable](DotNetStore/Assets/imgs/Storage_Table.jpg)
+
+5. Lembre-se de substituir **NOME_DA_CONTA** pelo nome da sua conta de armazenamento e **NOME_DA_TABELA** pelo nome desejado para a tabela. No caso o nome será **Pedidos**.
+
+6. Se você ainda não instalou o Azure CLI, pode fazer o download e instalá-lo a partir do site oficial: [Azure CLI](https://learn.microsoft.com/pt-br/cli/azure/install-azure-cli).
 
 [voltar](#índice)
 
@@ -110,15 +112,20 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
    
    ![stringConexao2](DotNetStore/Assets/imgs/Azure_Store_Account7.jpg)
 
+3. Pelo Azure CLI para obter a connection string utilize o seguinte comando.
+   ```
+    az storage account show-connection-string --name NOME_DA_CONTA --resource-group NOME_GRUPO_DE_RECURSOS
+   ```
+
 #### Emulador de Storage ou Plataforma Azure
 1. Primeiro devemos criar um arquivo json com o seguinte nome **local.settings.json** e inserir os dados abaixo.
    ```
     {
       "IsEncrypted": false,
       "Values": {
-        "AzureWebJobsStorage": "UseDevelopmentStorage=true", ==> Pode ser colocada a ConnectionString do Table Storage feito na plataforma ou pelo Azure CLI
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true", ==> Pode ser colocada a string de conexão da Storage Account feito na plataforma ou pelo Azure CLI
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-        "AzTbStorageConnectionString": "" ==> A ConnectionString do Table Storage feito na plataforma ou pelo Azure CLI
+        "AzTbStorageConnectionString": "" ==> A string de conexão do Storage Account feito na plataforma ou pelo Azure CLI
       }
     }
    ```
