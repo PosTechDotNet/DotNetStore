@@ -36,7 +36,7 @@ Este projeto faz parte de uma das entregas do trabalho de conclusão da segunda 
 [voltar](#índice)
 
 ## Solução
-Desenvolvimento de uma Durable Function com o Function Chaining Pattern para realizar o processo de fechamento de um pedido. Saiba mais sobre os patterns das Durable Functions neste [link](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp)
+Desenvolvimento de uma Durable Function com o Function Chaining Pattern para realizar o processo de fechamento de um pedido. Saiba mais sobre os patterns das [Durable Functions](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp)
 
 [voltar](#índice)
 
@@ -54,21 +54,21 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
 
 2. No painel de navegação à esquerda, selecione "Azure Storage".
 
-![CriarTableStorage1](DotNetStore\Assets\imgs\Azure_Store_Account1.jpg)
+![CriarTableStorage1](DotNetStore/Assets/imgs/Azure_Store_Account1.jpg)
 
-![CriarTableStorage2](DotNetStore\Assets\imgs\Azure_Store_Account2.jpg)
+![CriarTableStorage2](DotNetStore/Assets/imgs/Azure_Store_Account2.jpg)
 
 3. Selecione a conta de armazenamento na qual você deseja criar a tabela.
 
-![CriarTableStorage3](DotNetStore\Assets\imgs\Azure_Store_Account3.jpg)
+![CriarTableStorage3](DotNetStore/Assets/imgs/Azure_Store_Account3.jpg)
 
 4. Na seção "Data Storage", clique em "Tables" (Tabelas).
 
-![CriarTableStorage4](DotNetStore\Assets\imgs\Azure_Store_Account4.jpg)
+![CriarTableStorage4](DotNetStore/Assets/imgs/Azure_Store_Account4.jpg)
 
 5. Clique em "+ Add Table" (Adicionar Tabela).
 
-![CriarTableStorage1](DotNetStore\Assets\imgs\Azure_Store_Account5.jpg)
+![CriarTableStorage1](DotNetStore/Assets/imgs/Azure_Store_Account5.jpg)
 
 6. Insira o nome desejado para a tabela - no caso **Pedidos** -  e outras configurações necessárias.
 
@@ -83,17 +83,17 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
    ```
     az group create --name <NOME_DA_RECURSO> --location <LOCALIZACAO>
    ```
-   ![ResourceGroup](DotNetStore\Assets\imgs\Resource_Group.jpg)
+   ![ResourceGroup](DotNetStore/Assets/imgs/Resource_Group.jpg)
 3. Em seguida devemos criar uma conta de armazenamento (storage account) usando a Azure CLI, você pode usar o seguinte comando:
    ```
     az storage account create --name <NOME_DA_CONTA> --resource-group <NOME_GRUPO_DE_RECURSOS> --location <LOCALIZACAO> --sku <TIPO_DE_SKU>
    ```
-   ![StorageAccount](DotNetStore\Assets\imgs\Storage_Account.jpg)
+   ![StorageAccount](DotNetStore/Assets/imgs/Storage_Account.jpg)
 4. Para criar uma tabela no Azure Table Storage via linha de comando, você pode usar o Azure CLI. Abaixo está um exemplo do comando para criar uma tabela:
     ```
       az storage table create --account-name <NOME_DA_CONTA> --name <NOME_DA_TABELA>
     ```
-  ![StorageTable](DotNetStore\Assets\imgs\Storage_Table.jpg)
+  ![StorageTable](DotNetStore/Assets/imgs/Storage_Table.jpg)
 1. Lembre-se de substituir **NOME_DA_CONTA** pelo nome da sua conta de armazenamento e **NOME_DA_TABELA** pelo nome desejado para a tabela. No caso o nome será **Pedidos**.
 2. Se você ainda não instalou o Azure CLI, pode fazer o download e instalá-lo a partir do site oficial: [Azure CLI](https://learn.microsoft.com/pt-br/cli/azure/install-azure-cli).
 
@@ -104,11 +104,11 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
 #### Otendo a string de conexão do Table Storage
 1. Na aba à esquerda no campo Security + Networking clique em Access Keys
    
-   ![stringConexao1](DotNetStore\Assets\imgs\Azure_Store_Account6.jpg)
+   ![stringConexao1](DotNetStore/Assets/imgs/Azure_Store_Account6.jpg)
 
 2. Clique no botão Show (Mostrar) na Connection String e copie a string de conexão
    
-   ![stringConexao2](DotNetStore\Assets\imgs\Azure_Store_Account7.jpg)
+   ![stringConexao2](DotNetStore/Assets/imgs/Azure_Store_Account7.jpg)
 
 #### Emulador de Storage ou Plataforma Azure
 1. Primeiro devemos criar um arquivo json com o seguinte nome **local.settings.json** e inserir os dados abaixo.
@@ -125,7 +125,7 @@ Para criar uma tabela no Azure Table Storage por meio da plataforma Azure, você
 2. O **local.settings.json** pode conter informações sensíveis, como cadeias de conexão e segredos. Por essa razão, é altamente recomendável que você nunca armazene esse arquivo em um repositório remoto, a fim de evitar a exposição de dados confidenciais.
 3. Para executar o projeto no seu ambiente local, você pode usar o Emulador Azurite para a configuração de conexão AzureWebJobsStorage, exigida pelo projeto.
 4. Para utilizar o emulador, defina o valor de AzureWebJobsStorage como **UseDevelopmentStorage=true**. Altere essa configuração para uma cadeia de conexão de conta de armazenamento antes da implantação.
-![LocalSettings](DotNetStore\Assets\imgs\local_settings.jpg)
+![LocalSettings](DotNetStore/Assets/imgs/local_settings.jpg)
 
 ***Para obter mais informações, confira [“Emulador de armazenamento local”](https://learn.microsoft.com/pt-br/azure/storage/common/storage-use-azurite?tabs=visual-studio-code%2Ctable-storage).***
 
@@ -152,7 +152,7 @@ func start
 #### Chamada da Função
 Com a função em execução, você pode chamar suas funções HTTP ou ativar eventos para outras funções. Observe que, para funções HTTP, você precisará de uma ferramenta como o Postman para testar chamadas HTTP localmente.
 
-![Postman](DotNetStore\Assets\imgs\Execucao_Local_2.jpg)
+![Postman](DotNetStore/Assets/imgs/Execucao_Local_2.jpg)
 
 #### Exemplo de um Pedido para testar a aplicação
 
