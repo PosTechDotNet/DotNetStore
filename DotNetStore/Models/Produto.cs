@@ -8,7 +8,6 @@ namespace DotNetStoreDurableFunction.Models
         public int SKU { get; set; }
         public string Descricao { get; set; }
         public int Quantidade { get; set; }
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal ValorUnitario { get; set; }
+        public double ValorUnitario { get; set; }
     }
 }

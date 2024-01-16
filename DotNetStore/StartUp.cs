@@ -13,10 +13,10 @@ namespace DotNetStoreDurableFunction
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            var connectionString = Environment.GetEnvironmentVariable("SqlServerConnectionString");
+            /*var connectionString = Environment.GetEnvironmentVariable("SqlServerConnectionString");
 
             builder.Services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString));*/
             builder.Services.AddScoped<IPedidoService, PedidoService>();
         }
     }

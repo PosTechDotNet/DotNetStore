@@ -3,16 +3,13 @@ using DotNetStoreDurableFunction.DTO;
 using DotNetStoreDurableFunction.Mapping;
 using DotNetStoreDurableFunction.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DotNetStoreDurableFunction.Services
 {
@@ -65,13 +62,12 @@ namespace DotNetStoreDurableFunction.Services
             foreach (var item in pedido.Produtos)
             {
                 var produto = _produtos.FirstOrDefault(p => p.SKU == item.SKU);
-
                 if (produto != null)
                     obterDadosProdutos.Add(produto);
-            }           
+            }
 
             //Calcula o total do preços dos produtos
-            decimal precoTotal = 0;
+            double precoTotal = 0;
             obterDadosProdutos.ForEach(produto => precoTotal += produto.ValorUnitario * produto.Quantidade);
 
             //popular dados dentro do pedido
@@ -123,38 +119,36 @@ namespace DotNetStoreDurableFunction.Services
             return null;
         }
 
-        public async Task<CadastrarPedidoDto> SalvarPedido(Pedido pedido)
+        public Pedido SalvarPedido(Pedido pedido)
         {
 
             //Mapear para uma classe com os campos necessários na tabela Pedido
-            // Id - NumeroPedido - Usuario - Produtos - Endereco - PrecoTotal
+            // Id - NumeroPedido - Cliente - Produtos - Endereco - PrecoTotal
             var salvarPedido = pedido.MapearParaCadastrarPedidoDto();
 
             //Salva na tabela pedido no Azure Table Storage
-            SalvaNaTabelaAzure(salvarPedido);
-            
-            return salvarPedido;
+            SalvarNaTabelaAzure(salvarPedido);
+
+            return pedido;
         }
 
-        private static CadastrarPedidoDto SalvaNaTabelaAzure(CadastrarPedidoDto salvarPedido)
+        private static void SalvarNaTabelaAzure(CadastrarPedidoDto salvarPedido)
         {
+            // Substitua pela sua string de conexão
+            var connectionString = Environment.GetEnvironmentVariable("AzTbStorageConnectionString");
 
-            var connectionString = ""; // Substitua pela sua string de conexão
-            
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
-            
+
             CloudTableClient cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
-            
+
             CloudTable cloudTable = cloudTableClient.GetTableReference("pedidos");
-            
-            cloudTable.CreateIfNotExistsAsync();            
-            
+
+            cloudTable.CreateIfNotExistsAsync();
+
             TableOperation tableOperation = TableOperation.Insert(salvarPedido);
-            
+
             cloudTable.ExecuteAsync(tableOperation);
-            
-            return salvarPedido;
-           
+
         }
     }
 }

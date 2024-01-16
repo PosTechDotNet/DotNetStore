@@ -10,6 +10,6 @@ namespace DotNetStoreDurableFunction.Services
         Pedido ObterUsuario(Pedido pedido);
         Pedido ObterProdutos(Pedido pedido);
         Pedido ObterEndereco(Pedido pedido);
-        Task<CadastrarPedidoDto> SalvarPedido(Pedido pedido);
+        Pedido SalvarPedido(Pedido pedido);
     }
 }
