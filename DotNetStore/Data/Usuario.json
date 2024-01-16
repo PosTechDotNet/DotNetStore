@@ -1,0 +1,22 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "João Silva",
+        "cpf": "123.456.789-01",
+        "enderecoId": 1
+      },
+      {
+        "id": 2,
+        "nome": "Maria Souza",
+        "cpf": "987.654.321-00",
+        "enderecoId": 2
+      },
+      {
+        "id": 3,
+        "nome": "Carlos Oliveira",
+        "cpf": "111.222.333-44",
+        "enderecoId": 3
+      }
+    ]
+  }
