@@ -1,0 +1,22 @@
+{
+  "Usuarios": [
+    {
+      "Id": 1,
+      "Nome": "João Silva",
+      "CPF": "123.456.789-01",
+      "EnderecoId": 1
+    },
+    {
+      "Id": 2,
+      "Nome": "Maria Souza",
+      "CPF": "987.654.321-00",
+      "EnderecoId": 2
+    },
+    {
+      "Id": 3,
+      "Nome": "Carlos Oliveira",
+      "CPF": "111.222.333-44",
+      "EnderecoId": 3
+    }
+  ]
+}

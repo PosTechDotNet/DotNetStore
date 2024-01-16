@@ -1,0 +1,38 @@
+{
+  "Enderecos": [
+    {
+      "UsuarioId": 1,
+      "Logradouro": "Rua A, 123",
+      "Bairro": "Centro",
+      "Cidade": "Cidade A",
+      "UF": "UF A",
+      "Numero": 123,
+      "Complemento": "Apartamento 1",
+      "CEP": "12345-678",
+      "ValorFrete": 10.50
+    },
+    {
+      "UsuarioId": 2,
+      "Logradouro": "Avenida B, 456",
+      "Bairro": "Bairro B",
+      "Cidade": "Cidade B",
+      "UF": "UF B",
+      "Numero": 456,
+      "Complemento": "Casa 2",
+      "CEP": "98765-432",
+      "ValorFrete": 12.75
+    },
+    {
+      "UsuarioId": 3,
+      "Logradouro": "Travessa C, 789",
+      "Bairro": "Bairro C",
+      "Cidade": "Cidade C",
+      "UF": "UF C",
+      "Numero": 789,
+      "Complemento": "Casa 3",
+      "CEP": "11111-222",
+      "ValorFrete": 8.20
+    }
+  ]
+}
+  

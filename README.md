@@ -25,13 +25,13 @@ Este projeto faz parte de uma das entregas do trabalho de conclusão da segunda 
 [voltar](#índice)
 
 ## Integrantes
-| Nome                    | RM     | GitHub                             |
-| ----------------------- | ------ | ---------------------------------- |
-| Alex Jussiani Junior    | 350671 | https://github.com/AlexJussiani    |
-| Erick Setti dos Santos  | 351206 | https://github.com/ESettiCalculist |
-| Fábio da Silva Pereira  | 351053 | https://github.com/fbiopereira     |
-| Marcel da Silva Fonseca | 348885 | ==> Trocar pelo Lucas              |
-| Richard Kendy Tanaka    | 351234 | https://github.com/RichardKT88     |
+| Nome                   | RM     | GitHub                             |
+| ---------------------- | ------ | ---------------------------------- |
+| Alex Jussiani Junior   | 350671 | https://github.com/AlexJussiani    |
+| Erick Setti dos Santos | 351206 | https://github.com/ESettiCalculist |
+| Fábio da Silva Pereira | 351053 | https://github.com/fbiopereira     |
+| Lucas Santana de Souza | 351891 | https://github.com/Englucassantana |
+| Richard Kendy Tanaka   | 351234 | https://github.com/RichardKT88     |
 
 [voltar](#índice)
 
@@ -153,32 +153,29 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
 3. Abra o terminal no VSCode pressionando os comandos Ctrl (Command) + Shift + `
 4. Navegue até a pasta `DotNetStore` do seu projeto do Azure Functions.
 5. Execute o seguinte comando:
+   
 ```
 func start
-
 ```
 
 #### Executando Visual Studio
-1. Mussum Ipsum, cacilds vidis litro abertis.    
-2. Casamentiss faiz malandris se pirulitá.
-3. In elementis mé pra quem é amistosis quis leo.
-4. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
-5. Diuretics paradis num copo é motivis de denguis.
+1. Abra a solução `DotNetStore.sln` e clique no **DotNetStoreDurableFunction**
+
+![](DotNetStore/Assets/imgs/VisualStudio22.jpg)
 
 #### Chamada da Função
-Com a função em execução, você pode chamar suas funções HTTP ou ativar eventos para outras funções. Observe que, para funções HTTP, você precisará de uma ferramenta como o Postman para testar chamadas HTTP localmente.
+1. Ao executar pelo Visual Studio ou pelo VSCode a seguinte tela aparecerá. Copie o endereço
+
+![](DotNetStore/Assets/imgs/Execucao_Local_1.jpg)
+
+2. Com a função em execução, você pode chamar suas funções HTTP ou ativar eventos para outras funções. Observe que, para funções HTTP, você precisará de uma ferramenta como o Postman para testar chamadas HTTP localmente.
 
 ![Postman](DotNetStore/Assets/imgs/Execucao_Local_2.jpg)
 
 #### Exemplo de um Pedido para testar a aplicação
 
-1. Mussum Ipsum, cacilds vidis litro abertis.    
-2. Casamentiss faiz malandris se pirulitá.
-3. In elementis mé pra quem é amistosis quis leo.
-4. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
-5. Diuretics paradis num copo é motivis de denguis.
-
-
+1. Abaixo temos um exemplo de um Payload válido para testar a aplicação.
+   
 ```
 {
     "UsuarioId": 1,
@@ -201,6 +198,9 @@ Com a função em execução, você pode chamar suas funções HTTP ou ativar ev
     }
 }
 ```
+2. É possível montar um personalizado, mas antes é necessário acessar a pasta  `Data` e utilizar os seguintes arquivos Json *Usuarios.json* + *Produtos.json* + *Enderecos.json* para montar o payload.
+   
+![MontarPayload](DotNetStore/Assets/imgs/MontarPayload.jpg)
 
 [voltar](#índice)
 

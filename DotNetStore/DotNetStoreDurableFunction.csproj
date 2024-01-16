@@ -7,20 +7,18 @@
 		<PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="2.10.0" />
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.2.2" />
-		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.2.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.2.0" />		
 	</ItemGroup>
 	<ItemGroup>
+		<None Update="Data\Endereco.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Produtos.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Usuario.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="host.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

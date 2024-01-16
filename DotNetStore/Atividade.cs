@@ -58,7 +58,5 @@ namespace DotNetStoreDurableFunction
 
             return salvaPedido;
         }
-
-
     }
 }

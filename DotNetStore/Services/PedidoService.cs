@@ -2,40 +2,27 @@
 using DotNetStoreDurableFunction.DTO;
 using DotNetStoreDurableFunction.Mapping;
 using DotNetStoreDurableFunction.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace DotNetStoreDurableFunction.Services
 {
     public class PedidoService : IPedidoService
     {
-        private readonly DataContext _dataContext;
-        private readonly List<Usuario> _usuarios;
-        private readonly List<Endereco> _enderecos;
-        private readonly List<Produto> _produtos;
-        public PedidoService(DataContext dataContext)
+        private readonly IDataContextMock _dataContextMock;
+        public PedidoService(IDataContextMock dataContextMock)
         {
-            _dataContext = dataContext;
-
-            _usuarios = CarregarDadosJson<List<Usuario>>("Data/Usuario.json");
-            _enderecos = CarregarDadosJson<List<Endereco>>("Data/Endereco.json");
-            _produtos = CarregarDadosJson<List<Produto>>("Data/Produtos.json");
+            _dataContextMock = dataContextMock;
         }
 
-        private T CarregarDadosJson<T>(string caminho)
-        {
-            var json = File.ReadAllText(caminho);
-            return JsonConvert.DeserializeObject<T>(json);
-        }
+
         public Pedido ObterUsuario(Pedido pedido)
         {
-            var dadosUsuario = _usuarios.FirstOrDefault(u => u.Id == pedido.UsuarioId);
+
+            var dadosUsuario = _dataContextMock.ListarUsuarios().FirstOrDefault(u => u.Id == pedido.UsuarioId);
 
             //popular dados dentro do pedido
             Pedido pedidoComDadosUsuario = new Pedido()
@@ -43,7 +30,6 @@ namespace DotNetStoreDurableFunction.Services
                 UsuarioId = dadosUsuario.Id,
                 Usuario = new Usuario
                 {
-                    Id = dadosUsuario.Id,
                     CPF = dadosUsuario.CPF,
                     Nome = dadosUsuario.Nome
                 },
@@ -61,7 +47,7 @@ namespace DotNetStoreDurableFunction.Services
             var obterDadosProdutos = new List<Produto>();
             foreach (var item in pedido.Produtos)
             {
-                var produto = _produtos.FirstOrDefault(p => p.SKU == item.SKU);
+                var produto = _dataContextMock.ListarProdutos().FirstOrDefault(p => p.SKU == item.SKU);
                 if (produto != null)
                     obterDadosProdutos.Add(produto);
             }
@@ -73,10 +59,9 @@ namespace DotNetStoreDurableFunction.Services
             //popular dados dentro do pedido
             var pedidoComDadosProdutos = new Pedido()
             {
-                UsuarioId = pedido.Usuario.Id,
+                UsuarioId = pedido.UsuarioId,
                 Usuario = new Usuario
                 {
-                    Id = pedido.Usuario.Id,
                     CPF = pedido.Usuario.CPF,
                     Nome = pedido.Usuario.Nome
                 },
@@ -88,16 +73,16 @@ namespace DotNetStoreDurableFunction.Services
 
             return pedidoComDadosProdutos;
         }
-
+        
         public Pedido ObterEndereco(Pedido pedido)
         {
             // Obtém o usuário da lista com o ID correspondente
-            var usuario = _usuarios.FirstOrDefault(u => u.Id == pedido.UsuarioId);
+            var enderecoUsuario = _dataContextMock.ListarEnderecos().FirstOrDefault(u => u.UsuarioId == pedido.UsuarioId);
 
-            if (usuario != null)
+            if (enderecoUsuario != null)
             {
                 // Calcula total dos valor dos produtos + frete
-                decimal totalProdutoFrete = pedido.PrecoTotal + usuario.Endereco.ValorFrete;
+                double totalProdutoFrete = pedido.PrecoTotal + enderecoUsuario.ValorFrete;
 
                 // Popula dados dentro do pedido
                 var pedidoComDadosEndereco = new Pedido()
@@ -105,13 +90,12 @@ namespace DotNetStoreDurableFunction.Services
                     UsuarioId = pedido.UsuarioId,
                     Usuario = new Usuario
                     {
-                        Id = usuario.Id,
-                        CPF = usuario.CPF,
-                        Nome = usuario.Nome
+                        CPF = pedido.Usuario.CPF,
+                        Nome = pedido.Usuario.Nome
                     },
                     Produtos = pedido.Produtos,
                     PrecoTotal = totalProdutoFrete,
-                    Endereco = usuario.Endereco
+                    Endereco = enderecoUsuario
                 };
 
                 return pedidoComDadosEndereco;
@@ -141,7 +125,7 @@ namespace DotNetStoreDurableFunction.Services
 
             CloudTableClient cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
 
-            CloudTable cloudTable = cloudTableClient.GetTableReference("pedidos");
+            CloudTable cloudTable = cloudTableClient.GetTableReference("Pedidos");
 
             cloudTable.CreateIfNotExistsAsync();
 
