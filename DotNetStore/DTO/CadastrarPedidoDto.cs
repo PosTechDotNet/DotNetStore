@@ -12,9 +12,7 @@ namespace DotNetStoreDurableFunction.DTO
 {
     public class CadastrarPedidoDto : TableEntity
     {
-        //public int Id { get; set; }
         public int NumeroPedido { get; set; }
-        //public int UsuarioId { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Produtos { get; set; }

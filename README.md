@@ -202,6 +202,10 @@ func start
    
 ![MontarPayload](DotNetStore/Assets/imgs/MontarPayload.jpg)
 
+3. Pedidos cadastrados na Table Storage de **Pedidos**
+
+![PedidoTableStorage](DotNetStore/Assets/imgs/Pedidos_TableStorage.jpg)
+
 [voltar](#índice)
 
 

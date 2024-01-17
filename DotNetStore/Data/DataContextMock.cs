@@ -14,12 +14,12 @@ namespace DotNetStoreDurableFunction.Data
        
         public List<Usuario> ListarUsuarios()
         {
-            return Usuarios = CarregarDadosJson<DataContextMock>("Data/Usuario.json").Usuarios;
+            return Usuarios = CarregarDadosJson<DataContextMock>("Data/Usuarios.json").Usuarios;
         }
 
         public List<Endereco> ListarEnderecos()
         {
-            return Enderecos = CarregarDadosJson<DataContextMock>("Data/Endereco.json").Enderecos;
+            return Enderecos = CarregarDadosJson<DataContextMock>("Data/Enderecos.json").Enderecos;
         }
 
         public List<Produto> ListarProdutos()

@@ -24,7 +24,6 @@ namespace DotNetStoreDurableFunction.Services
 
             var dadosUsuario = _dataContextMock.ListarUsuarios().FirstOrDefault(u => u.Id == pedido.UsuarioId);
 
-            //popular dados dentro do pedido
             Pedido pedidoComDadosUsuario = new Pedido()
             {
                 UsuarioId = dadosUsuario.Id,
@@ -52,11 +51,9 @@ namespace DotNetStoreDurableFunction.Services
                     obterDadosProdutos.Add(produto);
             }
 
-            //Calcula o total do preços dos produtos
             double precoTotal = 0;
             obterDadosProdutos.ForEach(produto => precoTotal += produto.ValorUnitario * produto.Quantidade);
 
-            //popular dados dentro do pedido
             var pedidoComDadosProdutos = new Pedido()
             {
                 UsuarioId = pedido.UsuarioId,
@@ -76,15 +73,12 @@ namespace DotNetStoreDurableFunction.Services
         
         public Pedido ObterEndereco(Pedido pedido)
         {
-            // Obtém o usuário da lista com o ID correspondente
             var enderecoUsuario = _dataContextMock.ListarEnderecos().FirstOrDefault(u => u.UsuarioId == pedido.UsuarioId);
 
             if (enderecoUsuario != null)
             {
-                // Calcula total dos valor dos produtos + frete
                 double totalProdutoFrete = pedido.PrecoTotal + enderecoUsuario.ValorFrete;
 
-                // Popula dados dentro do pedido
                 var pedidoComDadosEndereco = new Pedido()
                 {
                     UsuarioId = pedido.UsuarioId,
@@ -106,19 +100,17 @@ namespace DotNetStoreDurableFunction.Services
         public Pedido SalvarPedido(Pedido pedido)
         {
 
-            //Mapear para uma classe com os campos necessários na tabela Pedido
-            // Id - NumeroPedido - Cliente - Produtos - Endereco - PrecoTotal
             var salvarPedido = pedido.MapearParaCadastrarPedidoDto();
 
-            //Salva na tabela pedido no Azure Table Storage
             SalvarNaTabelaAzure(salvarPedido);
-
+            
+            pedido.NumeroPedido = salvarPedido.NumeroPedido;
+            
             return pedido;
         }
 
         private static void SalvarNaTabelaAzure(CadastrarPedidoDto salvarPedido)
         {
-            // Substitua pela sua string de conexão
             var connectionString = Environment.GetEnvironmentVariable("AzTbStorageConnectionString");
 
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(connectionString);

@@ -9,16 +9,16 @@
 		<PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.2.2" />
 		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.2.0" />		
 	</ItemGroup>
-	<ItemGroup>
-		<None Update="Data\Endereco.json">
+	<ItemGroup>		
+		<None Update="Data\Enderecos.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		</None>		
 		<None Update="Data\Produtos.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Data\Usuario.json">
+		</None>		
+		<None Update="Data\Usuarios.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		</None>		
 		<None Update="host.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

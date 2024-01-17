@@ -18,7 +18,6 @@ namespace DotNetStoreDurableFunction.Models
 
         public int GerarNumeroPedido()
         {
-            //Gera o número do pedido
             byte[] buffer = Guid.NewGuid().ToByteArray();
             var numeroPedido = BitConverter.ToInt32(buffer, 8);
 

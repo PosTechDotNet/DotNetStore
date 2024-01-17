@@ -2,7 +2,7 @@
   "Enderecos": [
     {
       "UsuarioId": 1,
-      "Logradouro": "Rua A, 123",
+      "Logradouro": "Rua A",
       "Bairro": "Centro",
       "Cidade": "Cidade A",
       "UF": "UF A",
@@ -13,7 +13,7 @@
     },
     {
       "UsuarioId": 2,
-      "Logradouro": "Avenida B, 456",
+      "Logradouro": "Avenida B",
       "Bairro": "Bairro B",
       "Cidade": "Cidade B",
       "UF": "UF B",
@@ -24,7 +24,7 @@
     },
     {
       "UsuarioId": 3,
-      "Logradouro": "Travessa C, 789",
+      "Logradouro": "Travessa C",
       "Bairro": "Bairro C",
       "Cidade": "Cidade C",
       "UF": "UF C",

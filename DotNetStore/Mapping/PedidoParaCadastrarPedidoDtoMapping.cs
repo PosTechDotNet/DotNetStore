@@ -40,16 +40,22 @@ namespace DotNetStoreDurableFunction.Mapping
 
         private static string MontarProdutos(List<Produto> produtos)
         {
-            string produtosCliente = "";
+            StringBuilder produtosCliente = new StringBuilder();
             foreach (var produto in produtos)
             {
-                produtosCliente = string.Concat("[", produto.SKU, ", ",
-                    produto.Descricao, ", ",
-                    produto.Quantidade.ToString(), ", ",
-                    produto.ValorUnitario.ToString(), "]");
+                produtosCliente
+                    .Append("[SKU: ")
+                    .Append(produto.SKU)
+                    .Append(", Descrição: ")
+                    .Append(produto.Descricao)
+                    .Append(", Qtd: ")
+                    .Append(produto.Quantidade.ToString())
+                    .Append(", Valor: ") 
+                    .Append(produto.ValorUnitario.ToString())
+                    .Append("] ");
             };
 
-            return produtosCliente;
+            return produtosCliente.ToString();
         }
     }
 }
