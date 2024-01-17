@@ -138,12 +138,13 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
 
 2. O **local.settings.json** pode conter informações sensíveis, como cadeias de conexão e segredos. Por essa razão, é altamente recomendável que você nunca armazene esse arquivo em um repositório remoto, a fim de evitar a exposição de dados confidenciais.
 3. Para executar o projeto no seu ambiente local, você pode usar o Emulador Azurite para a configuração de conexão AzureWebJobsStorage, exigida pelo projeto.
+   1. ***Para obter mais informações, confira [“Emulador de armazenamento local”](https://learn.microsoft.com/pt-br/azure/storage/common/storage-use-azurite?tabs=visual-studio-code%2Ctable-storage).***
 4. Para utilizar o emulador, defina o valor de AzureWebJobsStorage como **UseDevelopmentStorage=true**. Altere essa configuração para uma cadeia de conexão de conta de armazenamento antes da implantação.
 ![LocalSettings](DotNetStore/Assets/imgs/local_settings.jpg)
-5. Caso não deseje usar o emulador Azurite pode utilizar a mesma string de conexão que vai na *AzTbStorageConnectionString* na *AzureWebJobsStorage*.
-6. Para que a aplicação grave os pedidos na Table Storage é **obrigatório** que a *AzTbStorageConnectionString* receba uma string de conexão.
+1. Caso não deseje usar o emulador Azurite pode utilizar a mesma string de conexão que vai na *AzTbStorageConnectionString* na *AzureWebJobsStorage*.
+2. Para que a aplicação grave os pedidos na Table Storage é **obrigatório** que a *AzTbStorageConnectionString* receba uma string de conexão.
 
-***Para obter mais informações, confira [“Emulador de armazenamento local”](https://learn.microsoft.com/pt-br/azure/storage/common/storage-use-azurite?tabs=visual-studio-code%2Ctable-storage).***
+
 
 #### Executando pelo VSCode
 1. Para executar uma função do Azure Functions no Visual Studio Code, você precisará instalar a extensão do Azure Functions no VSCode.
