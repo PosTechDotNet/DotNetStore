@@ -183,13 +183,11 @@ func start
     "Produtos": [
         {
             "SKU": 55,
-            "Quantidade": 1,
-            "ValorUnitario": 29.99
+            "Quantidade": 1
         },
         {
             "SKU": 150,
-            "Quantidade": 1,
-            "ValorUnitario": 89.99
+            "Quantidade": 1
         }
     ],
     "Endereco": {
