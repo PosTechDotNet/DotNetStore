@@ -48,7 +48,10 @@ namespace DotNetStoreDurableFunction.Services
             {
                 var produto = _dataContextMock.ListarProdutos().FirstOrDefault(p => p.SKU == item.SKU);
                 if (produto != null)
+                {
+                    produto.Quantidade = item.Quantidade;
                     obterDadosProdutos.Add(produto);
+                }
             }
 
             double precoTotal = 0;
