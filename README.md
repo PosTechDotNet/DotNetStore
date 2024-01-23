@@ -5,6 +5,7 @@
   - [Índice](#índice)
   - [Sobre](#sobre)
   - [Integrantes](#integrantes)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Solução](#solução)
     - [Fluxograma da Solução](#fluxograma-da-solução)
   - [Como Executar o Projeto](#como-executar-o-projeto)
@@ -35,8 +36,20 @@ Este projeto faz parte de uma das entregas do trabalho de conclusão da segunda 
 
 [voltar](#índice)
 
+## Tecnologias Utilizadas
+
+| Tecnologias                                                                                                                                                                | Uso                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)                                                                                                                      | Linguagem de Programação        |
+| [.NET](https://dotnet.microsoft.com/)                                                                                                                                      | Framework web                   |
+| [Azure Durable Functions](https://learn.microsoft.com/pt-br/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp) | Serverless App                  |
+| [Azurite](https://learn.microsoft.com/pt-br/azure/storage/common/storage-use-azurite?tabs=visual-studio%2Cblob-storage)                                                    | Emulador de Armazenamento Local |
+| [Visual Studio 2022](https://visualstudio.microsoft.com/pt-br/)                                                                                                            | Editor de Código                |
+
+[voltar](#índice)
+
 ## Solução
-Desenvolvimento de uma Durable Function com o Function Chaining Pattern para realizar o processo de fechamento de um pedido. Saiba mais sobre os patterns das [Durable Functions](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp)
+Desenvolvimento de uma Durable Function com o Function Chaining Pattern para realizar o processo de fechamento de um pedido. Saiba mais sobre os patterns das [Durable Functions](https://learn.microsoft.com/pt-br/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp)
 
 [voltar](#índice)
 
