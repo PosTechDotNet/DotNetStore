@@ -147,6 +147,7 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
 
 
 #### Executando pelo VSCode
+Primeiro certifique - se que vc tenha [Azure Functions Core Tools](https://learn.microsoft.com/pt-br/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp) instalado na sua máquina. 
 1. Para executar uma função do Azure Functions no Visual Studio Code, você precisará instalar a extensão do Azure Functions no VSCode.
    1. Abra o VSCode.
    2. No menu lateral, clique no ícone de extensões (ícone de quebra-cabeça) ou pressione Ctrl (Command) + Shift + X.
