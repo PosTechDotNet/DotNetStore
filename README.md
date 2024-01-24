@@ -157,8 +157,20 @@ Antes de executar o projeto pelo VsCode ou pelo Visual Studio devemos configurar
 1. Caso não deseje usar o emulador Azurite pode utilizar a mesma string de conexão que vai na *AzTbStorageConnectionString* na *AzureWebJobsStorage*.
 2. Para que a aplicação grave os pedidos na Table Storage é **obrigatório** que a *AzTbStorageConnectionString* receba uma string de conexão.
 
+#### Executando o Emulador Azurite
+Antes de começar, assegure-se de ter o Azurite instalado em seu ambiente.
 
+1. Instalação da Extensão no VSCode:
+  1. Clique no ícone de extensões (quebra-cabeça) na barra lateral ou pressione Ctrl (Command) + Shift + X;
+  2. Procure por "Azurite";
+  3. Clique em Install para instalar a extensão.
+2. Abrindo a Paleta de Comandos:
+3. Pressione Ctrl (Command) + Shift + P para abrir a paleta de comandos.
+4. Iniciando o Azurite:
+5. Digite "Azurite: start" na paleta de comandos e pressione Enter.
 
+   ![Azurite Start](DotNetStore/Assets/imgs/Azurite_Start.png)
+   
 #### Executando pelo VSCode
 Primeiro certifique - se que vc tenha [Azure Functions Core Tools](https://learn.microsoft.com/pt-br/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-csharp) instalado na sua máquina. 
 1. Para executar uma função do Azure Functions no Visual Studio Code, você precisará instalar a extensão do Azure Functions no VSCode.
